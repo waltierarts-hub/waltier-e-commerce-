@@ -1,0 +1,77 @@
+{
+  "orders": [
+    {
+      "orderId": "WAL-8942",
+      "createdAt": "2026-11-04T19:54:56.939Z",
+      "customer": {
+        "fullName": "Kabir Malhotra",
+        "email": "kabir.m@example.com",
+        "phone": "+91 98765 43210",
+        "address": "Flat 402, Signature Towers, Indiranagar",
+        "city": "Bengaluru",
+        "state": "Karnataka",
+        "pincode": "560038"
+      },
+      "items": [
+        {
+          "id": "wal-01-A2-black",
+          "productId": "wal-01",
+          "title": "AFTER HOURS",
+          "image": "after-hours",
+          "size": "A2",
+          "framed": true,
+          "frameColor": "Matte Black",
+          "price": 3299,
+          "quantity": 1
+        }
+      ],
+      "subtotal": 3299,
+      "shipping": 0,
+      "discount": 0,
+      "total": 3299,
+      "paymentMethod": "UPI (Verified)",
+      "paymentStatus": "Paid",
+      "fulfillmentStatus": "In Transit",
+      "timeline": [
+        {
+          "step": 1,
+          "name": "Order Confirmed & Payment Verified",
+          "completed": true,
+          "time": "Day 1, 10:30 AM"
+        },
+        {
+          "step": 2,
+          "name": "Master Inking on 300 GSM Cotton Paper",
+          "completed": true,
+          "time": "Day 1, 4:15 PM"
+        },
+        {
+          "step": 3,
+          "name": "Solid Wood Framing & Museum Acrylic",
+          "completed": true,
+          "time": "Day 2, 11:00 AM"
+        },
+        {
+          "step": 4,
+          "name": "Handed to Bluedart Air Express",
+          "completed": true,
+          "time": "Day 2, 6:30 PM"
+        },
+        {
+          "step": 5,
+          "name": "Out for Delivery to Bengaluru",
+          "completed": false,
+          "time": "Estimated Tomorrow"
+        }
+      ]
+    }
+  ],
+  "subscribers": [],
+  "messages": [],
+  "settings": {
+    "storeName": "WALTIER POSTER COMPANY",
+    "supportEmail": "support@waltier.co",
+    "freeShippingThreshold": 1499,
+    "standardShipping": 149
+  }
+}

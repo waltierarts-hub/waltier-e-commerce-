@@ -1,0 +1,352 @@
+@import url('https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,900,700&f[]=general-sans@400,500,600,700&f[]=jet-brains-mono@400,600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --ease-editorial: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-in-out-circ: cubic-bezier(0.85, 0, 0.15, 1);
+  }
+
+  body {
+    background-color: #F4F2EC;
+    color: #101010;
+    font-family: 'General Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    overflow-x: hidden;
+    selection-background-color: #EF171C;
+    selection-color: #FFFFFF;
+  }
+
+  ::selection {
+    background-color: #EF171C;
+    color: #FFFFFF;
+  }
+
+  ::-moz-selection {
+    background-color: #EF171C;
+    color: #FFFFFF;
+  }
+}
+
+/* Print / Brutalist Utility Classes */
+.noise-bg {
+  background-image: radial-gradient(rgba(16, 16, 16, 0.04) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+.tape-top {
+  position: relative;
+}
+.tape-top::before {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-1deg);
+  width: 70px;
+  height: 24px;
+  background-color: rgba(240, 230, 200, 0.75);
+  border: 1px dashed rgba(16, 16, 16, 0.15);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  z-index: 20;
+}
+
+.paper-edge {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 10px 25px -5px rgba(0,0,0,0.08);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F4F2EC;
+  border-left: 1px solid #D8D4CC;
+}
+::-webkit-scrollbar-thumb {
+  background: #101010;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #EF171C;
+}
+
+/* ==================================================
+   WALTIER MOTION SYSTEM: EDITORIAL & TACTILE TOKENS
+   ================================================== */
+
+/* 1. Fast Feedback (120ms - 180ms) */
+.btn-tactile {
+  transition: transform 140ms var(--ease-editorial), 
+              background-color 160ms ease, 
+              color 160ms ease,
+              box-shadow 160ms ease;
+  will-change: transform;
+}
+.btn-tactile:active {
+  transform: translate(2px, 2px) !important;
+  box-shadow: 1px 1px 0px #101010 !important;
+}
+
+/* 2. Interactive Navigation Underline */
+.nav-link-editorial {
+  position: relative;
+}
+.nav-link-editorial::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #EF171C;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 220ms var(--ease-editorial);
+}
+.nav-link-editorial:hover::after,
+.nav-link-editorial.active::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* 3. Hero Masked Typographic Reveals */
+@keyframes maskedTextUp {
+  0% {
+    transform: translateY(110%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+.animate-mask-line-1 {
+  display: inline-block;
+  animation: maskedTextUp 520ms var(--ease-editorial) 100ms forwards;
+  opacity: 0;
+}
+.animate-mask-line-2 {
+  display: inline-block;
+  animation: maskedTextUp 520ms var(--ease-editorial) 200ms forwards;
+  opacity: 0;
+}
+.animate-mask-line-3 {
+  display: inline-block;
+  animation: maskedTextUp 520ms var(--ease-editorial) 300ms forwards;
+  opacity: 0;
+}
+
+/* 4. Subtitle and CTA Entrance */
+@keyframes fadeSlideUp {
+  0% {
+    transform: translateY(18px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-hero-sub {
+  animation: fadeSlideUp 500ms var(--ease-editorial) 420ms forwards;
+  opacity: 0;
+}
+.animate-hero-cta {
+  animation: fadeSlideUp 460ms var(--ease-editorial) 520ms forwards;
+  opacity: 0;
+}
+
+/* 5. Brush Stroke Strike Reveal */
+@keyframes brushStrike {
+  0% {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+.animate-brush-strike {
+  transform-origin: left center;
+  animation: brushStrike 440ms var(--ease-editorial) 580ms forwards;
+  opacity: 0;
+}
+
+/* 6. Hero Poster Staggered Drop-In */
+@keyframes posterDropInLeft {
+  0% {
+    transform: translateY(30px) rotate(-9deg) scale(0.95);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0) rotate(-6deg) scale(1);
+    opacity: 1;
+  }
+}
+@keyframes posterDropInCenter {
+  0% {
+    transform: translateY(35px) scale(0.94);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+@keyframes posterDropInRight {
+  0% {
+    transform: translateY(30px) rotate(9deg) scale(0.95);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0) rotate(6deg) scale(1);
+    opacity: 1;
+  }
+}
+
+.hero-poster-1 {
+  animation: posterDropInLeft 600ms var(--ease-editorial) 350ms forwards;
+  opacity: 0;
+}
+.hero-poster-2 {
+  animation: posterDropInCenter 650ms var(--ease-editorial) 450ms forwards;
+  opacity: 0;
+}
+.hero-poster-3 {
+  animation: posterDropInRight 600ms var(--ease-editorial) 550ms forwards;
+  opacity: 0;
+}
+
+/* 7. Marquee Strip (Seamless Infinite Loop) */
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee-loop {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 24s linear infinite;
+}
+.animate-marquee-loop:hover,
+.animate-marquee-loop:focus-within {
+  animation-play-state: paused;
+}
+
+/* 8. Reusable Scroll Reveal Observer Styles */
+.reveal-fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 500ms var(--ease-editorial), transform 500ms var(--ease-editorial);
+  will-change: opacity, transform;
+}
+.reveal-fade-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 9. Card Zoom & Quick-view Micro-interactions */
+.product-card-hover {
+  transition: transform 220ms var(--ease-editorial), 
+              box-shadow 220ms var(--ease-editorial),
+              border-color 180ms ease;
+  will-change: transform, box-shadow;
+}
+.product-card-hover:hover {
+  transform: translateY(-4px);
+}
+
+.artwork-img-scale {
+  transition: transform 380ms var(--ease-editorial);
+  will-change: transform;
+}
+.product-card-hover:hover .artwork-img-scale {
+  transform: scale(1.035);
+}
+
+/* 10. Drawer & Modal Entrance (220ms - 280ms) */
+.drawer-backdrop-fade {
+  animation: drawerBackdrop 240ms var(--ease-editorial) forwards;
+}
+@keyframes drawerBackdrop {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.drawer-slide-right {
+  animation: drawerSlide 280ms var(--ease-editorial) forwards;
+}
+@keyframes drawerSlide {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0%); }
+}
+
+.modal-pop-center {
+  animation: modalPop 260ms var(--ease-editorial) forwards;
+}
+@keyframes modalPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.96) translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* 11. Highlight Added Cart Item Pulse */
+@keyframes cartPulseHighlight {
+  0% { background-color: rgba(239, 23, 28, 0.15); }
+  100% { background-color: transparent; }
+}
+.cart-pulse-active {
+  animation: cartPulseHighlight 1.2s ease-out;
+}
+
+/* ==================================================
+   ACCESSIBILITY: PREFERS-REDUCED-MOTION OVERRIDES
+   ================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-mask-line-1,
+  .animate-mask-line-2,
+  .animate-mask-line-3,
+  .animate-hero-sub,
+  .animate-hero-cta,
+  .hero-poster-1,
+  .hero-poster-2,
+  .hero-poster-3,
+  .animate-brush-strike,
+  .reveal-fade-up {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+
+  .animate-marquee-loop {
+    animation: none !important;
+    transform: none !important;
+  }
+}
